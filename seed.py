@@ -1,29 +1,35 @@
 import sqlite3
 
-connection = sqlite3.connect('flask_tut.db')
+connection = sqlite3.connect('todo.db')
 cursor = connection.cursor()
 
 cursor.execute(
     """INSERT INTO users(
         username,
-        password,
-        favorite_color
+        password
         )VALUES(
-        'Gordon',
-        'Ramsay',
-        'Red'
+        'Jon',
+        'Kelly'
         );"""
 )
 
 cursor.execute(
-    """INSERT INTO users(
-        username,
-        password,
-        favorite_color
+    """INSERT INTO lists(
+        listname
         )VALUES(
-        'Ironman',
-        'Tony',
-        'Gold'
+        'List1'
+        );"""
+)
+
+cursor.execute(
+    """INSERT INTO listitems(
+        description,
+        notes,
+        checkbox
+        )VALUES(
+        'my first list',
+        'cool list',
+        '0'
         );"""
 )
 
