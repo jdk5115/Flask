@@ -10,8 +10,10 @@ def home():
     else:
         username = request.form['username']
         password = request.form['password']
-        if username == "Jon" and password == "Kelly":
-            message = model.my_name('Jon')
+        db_password = model.check_pw(username)
+
+        if password == db_password:
+            message = model.check_pw(password)
             return render_template('index.html', message=message)
         else:
             error_message= "Hint: It's you."
