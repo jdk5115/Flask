@@ -6,10 +6,12 @@ cursor = connection.cursor()
 cursor.execute(
     """INSERT INTO users(
         username,
-        password
+        password,
+        favorite_color
         )VALUES(
         'Jon',
-        'Kelly'
+        'Kelly',
+        'Green'
         );"""
 )
 
