@@ -14,7 +14,7 @@ def before_request():
     if 'username' in session:
         g.username = session['username']
 
-@app.route('/', methods = ['GET'])
+@app.route('/', methods = ['GET', 'POST'])
 def home():
     if 'username' in session:
         g.user=session['username']
@@ -62,6 +62,21 @@ def signup():
         favorite_color = request.form["favorite_color"]
         message = model.signup(username, password, favorite_color)
         return render_template('signup.html',message=message)
+    return render_template('signup.html'), 200
+
+@app.route('/homepage', methods = ['GET','POST'])
+def homepage():
+    if request.method == 'GET':
+        return render_template('homepage.html')
+    else:
+        username = request.form["username"]
+        password = request.form["password"]
+        pwd = model.check_pw(username)
+
+        if request.form['password'] == pwd:
+            session['username'] = request.form['username']
+            message = model.create_list(username)
+        return render_template('homepage.html',message=message)
     return render_template('signup.html'), 200
 
 @app.route('/getsession')

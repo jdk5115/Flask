@@ -11,4 +11,20 @@
     <a href="/terms">Please accept terms and conditions</a>
     <br>
     <a href="/">Back to the homepage</a>
+    <br>
+    <form action="/homepage" method = 'post'>
+        <input placeholder="Create List" name="list" type="text">
+        <input type = "submit">
+    </form>
+    <br>
+    <br>
+    <h1>Your Lists</h1>
+    <ol> 
+        <!-- For loop logic of jinja template -->
+        {%for i in range(0, len)%} 
+          
+            <li>{{Pokemons[i]}}</li> 
+        {%endfor%} 
+          
+        </ol> 
 {% endblock main %}

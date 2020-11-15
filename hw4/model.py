@@ -58,12 +58,35 @@ def signup(username, password, favorite_color):
     connection.close()
     return favorite_color
 
-def add_list_item():
+def create_list(listname):
     connection = sqlite3.connect('todo.db', check_same_thread=False)
     cursor = connection.cursor()
-    cursor.execute(""" SELECT password FROM users WHERE username='{username}';""".format(username=username))
+    cursor.execute(""" SELECT listname FROM lists WHERE listname='{listname}';""".format(listname=listname))
     exist = cursor.fetchone()
     if exist is None:
-       cursor.execute(""" INSERT password FROM users WHERE username='{username}';""".format(username=username))
+       cursor.execute(""" INSERT listname FROM lists WHERE listname='{listname}';""".format(listname=listname))
     else:
-        return ('User already exists.')  
+        return ('List already exists.')  
+    
+    connection.commit()
+    cursor.close()
+    connection.close()
+    message = 'List {listname} successfully created.'
+    return listname, message
+
+'''def display_lists(username):
+    connection = sqlite3.connect('todo.db', check_same_thread=False)
+    cursor = connection.cursor()
+    cursor.execute(""" SELECT listname FROM lists WHERE username='{username}' ORDER BY pk DESC;""")
+    user_lists = cursor.fetchall()
+    lists = []
+
+
+    for i in range(len(user_lists)):
+        list_name = user_lists[i][0]
+        lists.append(list_name)
+
+    connection.commit()
+    cursor.close()
+    connection.close()
+    return users'''
