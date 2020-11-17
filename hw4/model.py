@@ -64,15 +64,15 @@ def create_list(listname):
     cursor.execute(""" SELECT listname FROM lists WHERE listname='{listname}';""".format(listname=listname))
     exist = cursor.fetchone()
     if exist is None:
-       cursor.execute(""" INSERT listname FROM lists WHERE listname='{listname}';""".format(listname=listname))
+       cursor.execute(""" INSERT INTO lists(listname) VALUES('{listname}');""".format(listname=listname))
     else:
         return ('List already exists.')  
     
     connection.commit()
     cursor.close()
     connection.close()
-    message = 'List {listname} successfully created.'
-    return listname, message
+    message = 'Your list ' + listname + ' has successfully been created.'
+    return message
 
 '''def display_lists(username):
     connection = sqlite3.connect('todo.db', check_same_thread=False)

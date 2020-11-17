@@ -44,7 +44,7 @@ def login():
         pwd = model.check_pw(areyouuser)
         if request.form['password'] == pwd:
             session['username'] = request.form['username']
-            return redirect(url_for('home'))
+            return redirect(url_for('homepage'))
     return render_template('index.html')
 
 @app.route('/structure', methods = ['GET'])
@@ -69,13 +69,8 @@ def homepage():
     if request.method == 'GET':
         return render_template('homepage.html')
     else:
-        username = request.form["username"]
-        password = request.form["password"]
-        pwd = model.check_pw(username)
-
-        if request.form['password'] == pwd:
-            session['username'] = request.form['username']
-            message = model.create_list(username)
+        newlist = request.form['listname']
+        message = model.create_list(newlist)
         return render_template('homepage.html',message=message)
     return render_template('signup.html'), 200
 

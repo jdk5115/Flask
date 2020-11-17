@@ -1,7 +1,7 @@
 {% extends "structure.html" %}
 
 {% block main %}
-    <h1>Welcome back! Make yourself at home.</h1>
+    <h1>Welcome back! HOMEPAGE Make yourself at home.</h1>
     <br>
     <a href="/about">Login here!</a>
     <p>{{ message }}</p>
@@ -13,18 +13,7 @@
     <a href="/">Back to the homepage</a>
     <br>
     <form action="/homepage" method = 'post'>
-        <input placeholder="Create List" name="list" type="text">
+        <input placeholder="Create List" name="listname" type="text">
         <input type = "submit">
     </form>
-    <br>
-    <br>
-    <h1>Your Lists</h1>
-    <ol> 
-        <!-- For loop logic of jinja template -->
-        {%for i in range(0, len)%} 
-          
-            <li>{{Pokemons[i]}}</li> 
-        {%endfor%} 
-          
-        </ol> 
-{% endblock main %}
+  {% endblock main %}
