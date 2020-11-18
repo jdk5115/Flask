@@ -19,7 +19,7 @@ def home():
     if 'username' in session:
         g.user=session['username']
         return render_template('homepage.html', message= '<img src= static/img/pic.png')
-    return render_template('index.html', message = 'Login to the page or sign up!')
+    return render_template('login.html', message = 'Login to the page or sign up!')
 
 
 '''    if request.method == 'GET':

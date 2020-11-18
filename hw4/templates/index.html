@@ -1,14 +1,13 @@
 {% extends "structure.html" %}
 
 {% block main %}
-    <h1>Welcome to the show!  INDEX Please log in.</h1>
-    <form action="/" method = 'post'>
-        <input placeholder="Username" name="username" type="text">
-        <input placeholder="Password" name="password" type="password">
-        <input type = "submit">
-    </form>
+    <h1>Welcome to the show!  Please sign up or log in.</h1>
     <p>{{ message }}</p>
     <br>
+    <br>
+    <br>
+    <br>
+    <a href="/login">Log in</a>
     <br>
     <br>
     <a href="/signup">If you don't have an account, you can sign up here!</a>
