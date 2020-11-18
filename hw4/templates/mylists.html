@@ -1,0 +1,41 @@
+{% extends "structure.html" %}
+
+{% block main %}
+    <h1>Welcome back! Make yourself at home.</h1>
+    <br>
+    <p>{{ message }}</p>
+
+    <form action="/mylists" method = 'post'>
+        <input placeholder="Create List" name="listname" type="text">
+        <input type = "submit">
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <a href="/about">About Me</a>
+    <br>
+    <a href="/privacy">View our privacy policy</a>
+    <br>
+    <a href="/terms">Terms and conditions</a>
+    <br>
+    <a href="/">Back to Homepage</a>
+
+{% endblock main %}
