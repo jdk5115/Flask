@@ -21,7 +21,7 @@ def home():
         return render_template('homepage.html', message= '<img src= static/img/pic.png')
     return render_template('login.html', message = 'Login to the page or sign up!')
 
-
+#Need to save this chunk of code for later - don't know if I need to do this instead of the other one
 '''    if request.method == 'GET':
         return render_template('index.html', message="aloha")
     else:
