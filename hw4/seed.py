@@ -17,18 +17,22 @@ cursor.execute(
 
 cursor.execute(
     """INSERT INTO lists(
+        username,
         listname
         )VALUES(
+        'Jon',
         'List1'
         );"""
 )
 
 cursor.execute(
     """INSERT INTO listitems(
+        username,
         description,
         notes,
         checkbox
         )VALUES(
+        'Jon',
         'my first list',
         'cool list',
         '0'

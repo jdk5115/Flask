@@ -70,17 +70,16 @@ def homepage():
         return render_template('homepage.html')
     else:
         newlist = request.form['listname']
-        message = model.create_list(newlist)
+        message = model.create_list(newlist, 'username')
         return render_template('homepage.html',message=message)
     return render_template('signup.html'), 200
 
 @app.route('/mylists', methods = ['GET','POST'])
 def mylists():
     if request.method == 'GET':
-        return render_template('mylists.html')
+        message = model.display_lists('username')
+        return render_template('mylists.html', message=message)
     else:
-        newlist = request.form['listname']
-        message = model.create_list(newlist)
         return render_template('mylists.html', message=message)
     return render_template('signup.html'), 200
 

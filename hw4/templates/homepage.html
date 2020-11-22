@@ -3,6 +3,15 @@
 {% block main %}
     <h1>Welcome back! Make yourself at home.</h1>
     <br>
+    <br>
+    <p>{{ message }}</p>
+    <br>
+    <br>
+    <form action="/homepage" method = 'post'>
+        <input placeholder='New list name' name="listname" type="text">
+        <input type = "submit">
+    </form>
+    <br>
     <a href="/mylists">Go to my lists</a>
     <br>
     <br>

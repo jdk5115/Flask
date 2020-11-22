@@ -13,11 +13,13 @@ cursor.execute(
 )
 cursor.execute(
     """CREATE TABLE lists(
+        username VARCHAR(16),
         listname VARCHAR(16)
     );"""
 )
 cursor.execute(
     """CREATE TABLE listitems(
+        username VARCHAR(16),
         description VARCHAR(64),
         notes VARCHAR(32),
         checkbox BOOLEAN(1)

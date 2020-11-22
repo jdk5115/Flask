@@ -58,12 +58,13 @@ def signup(username, password, favorite_color):
     connection.close()
     return favorite_color
 
-def create_list(listname):
+def create_list(listname, username):
     connection = sqlite3.connect('todo.db', check_same_thread=False)
     cursor = connection.cursor()
     cursor.execute(""" SELECT listname FROM lists WHERE listname='{listname}';""".format(listname=listname))
     exist = cursor.fetchone()
     if exist is None:
+       cursor.execute(""" INSERT INTO lists(username) VALUES('{username}');""".format(username=username))
        cursor.execute(""" INSERT INTO lists(listname) VALUES('{listname}');""".format(listname=listname))
     else:
         return ('List already exists.')  
@@ -74,19 +75,18 @@ def create_list(listname):
     message = 'Your list ' + listname + ' has successfully been created.'
     return message
 
-'''def display_lists(username):
+def display_lists(username):
     connection = sqlite3.connect('todo.db', check_same_thread=False)
     cursor = connection.cursor()
-    cursor.execute(""" SELECT listname FROM lists WHERE username='{username}' ORDER BY pk DESC;""")
+    cursor.execute(""" SELECT listname FROM lists WHERE username='{username}' ORDER BY listname DESC;""")
     user_lists = cursor.fetchall()
-    lists = []
+  
 
-
-    for i in range(len(user_lists)):
-        list_name = user_lists[i][0]
-        lists.append(list_name)
+    # for i in range(len(user_lists)):
+    #     list_name = user_lists[i][0]
+    #     lists.append(list_name)
 
     connection.commit()
     cursor.close()
     connection.close()
-    return users'''
+    return user_lists
