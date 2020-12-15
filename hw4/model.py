@@ -78,13 +78,13 @@ def create_list(listname, username):
 def display_lists(username):
     connection = sqlite3.connect('todo.db', check_same_thread=False)
     cursor = connection.cursor()
-    cursor.execute(""" SELECT listname FROM lists WHERE username='{username}' ORDER BY listname DESC;""")
+    cursor.execute(""" SELECT listname FROM lists WHERE username='{username}';""".format(username=username))
     user_lists = cursor.fetchall()
-  
+    lists=[]
 
-    # for i in range(len(user_lists)):
-    #     list_name = user_lists[i][0]
-    #     lists.append(list_name)
+    for i in range(len(user_lists)):
+        item = user_lists[i][0]
+        lists.append(item)
 
     connection.commit()
     cursor.close()
